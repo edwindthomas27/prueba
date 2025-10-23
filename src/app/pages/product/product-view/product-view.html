@@ -1,0 +1,55 @@
+<main class="main__container">
+    <div class="align_to_end">
+            <div>
+                <img [src]="images[imgSelectedIndex]" class="selected_image"/>
+                <div class="thumbnails">
+                    <img *ngFor="let img of images; let i = index" [src]="img" (click)="selectImage(i)" [class.selected]="i === imgSelectedIndex" class="thumbnail"/>
+                </div>
+        </div>
+    </div>
+    <div>
+        <div class="company__label">
+            {{product?.subcategory_name | uppercase}}
+        </div>
+        <div class="product__title">
+            {{product?.pd_name}}
+        </div>
+        <div class="product__description">
+            {{product?.pd_description}}
+        </div>
+
+        <!-- <div class="product__variations">
+            <div *ngFor="let variation of variations" class="variation__item">
+                {{variation.name}}
+                <div class="variation__subitem">
+                    <div *ngFor="let option of variation.options" class="subitem__option">
+                        <input type="radio" [name]="variation.name" [value]="option" (change)="selectVariation(variation.name, option)"/>
+                        {{option.name}}
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="complements">
+            <div *ngFor="let complement of complements;let i =index" class="complement__item">
+                <div class="complement__title" (click)="selectComplement(i)" [class.complement]="complements.includes(i)">{{complement.name}}</div>
+            </div>
+        </div>
+
+        <div class="product__price">
+            {{product?.pd_unit_price | currency}}
+        </div>
+
+        <div class="cart_content">
+            <div class="quantity__selector">
+                <button (click)="removeQuantity()">-</button>
+                <span>{{quantity}}</span>
+                <button (click)="addQuantity()">+</button>
+            </div>
+            <button class="add_to_cart" >
+                Add to Cart
+            </button>
+        </div>
+    </div>
+</main>
