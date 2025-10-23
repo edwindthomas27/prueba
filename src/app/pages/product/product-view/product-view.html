@@ -32,8 +32,8 @@
 
 
         <div class="complements">
-            <div *ngFor="let complement of complements;let i =index" class="complement__item">
-                <div class="complement__title" (click)="selectComplement(i)" [class.complement]="complements.includes(i)">{{complement.name}}</div>
+            <div *ngFor="let complement of complements;let i =index" >
+                <div class="complement__title complement__item" (click)="selectComplement(i)"  [class.complement]="selectedComplements.includes(i)">{{complement.name}}</div>
             </div>
         </div>
 
